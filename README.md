@@ -2,6 +2,8 @@
 
 ## List
 
+- Collection of data
+
 
 # Algorithms
 
