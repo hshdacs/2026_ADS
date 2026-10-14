@@ -64,6 +64,14 @@ These extended data sets are represented as references in most PL (Java), some c
 
 ## Linked List
 
+```mermaid
+
+flowchart LR
+    A["Head"] --> B["Node 1"]
+    B --> C["Node 2"]
+    C --> D["Node 3"]
+    D --> E["NULL"]
+```
 
 
 # Algorithms
