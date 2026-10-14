@@ -64,7 +64,69 @@ These extended data sets are represented as references in most PL (Java), some c
 
 ## Linked List
 
+- saving element with the information of its successor
+- Node ```mermaid
+    block
+        block
+            Reference to next Element
+            The data element
+        end
+  ```
+- if there is no next element, then NIL/NULL is set
+- we nee a reference to the first element (HEAD, ROOT)
+- basic operations
+    - write / set (add, append, insert)
+        - create a new node
+        - find last element and set next reference to current element
+        - maybe store last element to speed up
+        - insert at the beginning is very fast
+    - read / get (index like an array [])
+        - accessing by index we need to iterate by counting the elements
+    - delete / remove
+        - we need the element first, see read
+        - removing just need to rewire the next reference
+    - clear
+        - clean up all nodes
+    - size / length
+    - isEmpty
 
+Comparison Array (List) and Linked (List)
+| Operation | Array | Linked List |
+|-|-|-|
+| create (insert) | slow O(n) | fast O(1) |
+| read | fast O(1) | slow O(n) |
+| update | fast | slow |
+| delete | slow | fast |
+| Memory | just the data | extra reference needed |
+
+## Double Linked List
+
+- Node ```mermaid
+    block
+        block
+            Reference to next element
+            Reference to previous element
+            The data element
+        end
+  ```
+- typically there are references to the first element (head, first), and last element (tail, last)
+- easy of iterating from to front to last, and last to front
+- also easy in deleting an element in the middle
+
+### XOR Double Linked List
+
+- Node ```mermaid
+    block
+        block
+            XOR Reference to next/previous element
+            The data element
+        end
+  ```
+- Storing an element means, XORing the previous and next reference as our XOR reference
+- Getting the next element, XORing the previous reference
+- Getting the previous element, XORing the next reference
+- But not possible to get next or previous of a random element
+- see [Wikipedia](https://en.wikipedia.org/wiki/XOR_linked_list)
 
 # Algorithms
 
