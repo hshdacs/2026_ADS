@@ -65,11 +65,12 @@ These extended data sets are represented as references in most PL (Java), some c
 ## Linked List
 
 - saving element with the information of its successor
-- Node ```mermaid
-    block
+- Node
+```mermaid
+    block-beta
         block
-            Reference to next Element
-            The data element
+            Reference_to_next_element
+            The_data_element
         end
   ```
 - if there is no next element, then NIL/NULL is set
@@ -90,6 +91,15 @@ These extended data sets are represented as references in most PL (Java), some c
     - size / length
     - isEmpty
 
+Example
+```mermaid
+flowchart LR
+   A["Head"] --> B["Node 1"]
+   B --> C["Node 2"]
+   C --> D["Node 3"]
+   D --> E["NULL"]
+ ```
+
 Comparison Array (List) and Linked (List)
 | Operation | Array | Linked List |
 |-|-|-|
@@ -101,12 +111,13 @@ Comparison Array (List) and Linked (List)
 
 ## Double Linked List
 
-- Node ```mermaid
-    block
+- Node
+```mermaid
+block-beta
         block
-            Reference to next element
-            Reference to previous element
-            The data element
+            Reference_to_next_element
+            Reference_to_previous_element
+            The_data_element
         end
   ```
 - typically there are references to the first element (head, first), and last element (tail, last)
@@ -115,11 +126,12 @@ Comparison Array (List) and Linked (List)
 
 ### XOR Double Linked List
 
-- Node ```mermaid
-    block
+- Node
+```mermaid
+    block-beta
         block
-            XOR Reference to next/previous element
-            The data element
+            XOR_Reference_to_next/previous_element
+            The_data_element
         end
   ```
 - Storing an element means, XORing the previous and next reference as our XOR reference
