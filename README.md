@@ -40,6 +40,7 @@ These extended data sets are represented as references in most PL (Java), some c
     - write / set
     - create (**new**)
     - dispose / destroy (**delete**)
+- in most PL zero based
 
 ## (Array) List
 
@@ -139,6 +140,49 @@ block-beta
 - Getting the previous element, XORing the next reference
 - But not possible to get next or previous of a random element
 - see [Wikipedia](https://en.wikipedia.org/wiki/XOR_linked_list)
+
+## Set
+
+| List | Set |
+|-|-|
+| ordered elements | unordered elements |
+| double elements allowed | no double elements allowed |
+
+- typically implemented as an arry or linked list
+
+## Table (Map, Dictionary, Key/Value-Pairs)
+
+- behaves like an array, but with an alphanumeric index, e.g. table['red']
+- realization
+    - two corresponding arrays, one for the keys, other the values
+    - maybe, one array storing a node: key, value
+        ```mermaid
+            block-beta
+                block
+                    key_element
+                    data_element
+                end
+        ```
+    - keep this array sorted (SortedMap)
+    - excursion:
+        - linear search: O(n)
+        - binary search: O(log_2 n)
+        - hashing : O(1)
+    - using hashing
+        - converting a string (sequence of elements) into a number, e.g. ((('r' * 100) + 'e') * 100) + 'd'
+        - using this number as the numerical index for a standard array
+        - any hash function will return an integer (31 Bit)
+        - this value will be truncated (modulo %) by the size of the designated array
+        - truncating will lead to collision (different keys with the same number)
+        - solutions
+            - use the next free number (worse utilization of array space)
+            - recalculating the array position
+            - using a linked list on the index position
+            (better utilization of array space)
+        - array might get full
+            - new bigger array must be allocated, the truncation value will be adopted and all old values/keys must be recalculated
+            - often extended by an utilization of 70%
+
 
 # Algorithms
 
