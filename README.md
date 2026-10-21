@@ -211,7 +211,7 @@ Comparison Sorted Table and Hashed Table
 
 ## Tree
 
-### Binary Tree
+### Binary (Search) Tree
 
 - Node with two successors
 - Node
@@ -245,15 +245,73 @@ graph TD
         - clould also lead to re-balancing the tree
         - delete and insert
     - traverse
-        - left - print - right
+        - Inorder (left - print - right)
+        - Preorder (print - left - right)
+        - Postorder (left - right - print)
         - right - print - left
-        - print - left - right
         - (print - right - left)
+- Terminology
+    - Parent Node (e.g. 50 is parent for 30 and 70)
+    - Child Node (e.g. 30 is child for 50)
+    - Ancestor of a node (All nodes on the path of the root to that specific node)
+    - Descendants of a node (All nodes that lie in the subtree of that node as a root)
+    - Root Node (e.g. 50 is the root, where the tree starts)
+    - Leaf Node (Nodes without childrend)
+    - Internal Nodes (Nodes with at least one child)
+    - Subtree of a node (A tree consisting of that node and all its descendants)
+    - Path in a tree (A sequence of nodes from the root to this node)
+    - Edge (The link between a parent node and its child node)
+    - Depth/Level of a Node (Number of edges in the path to that node)
+    - Height (Number of nodes of the longest path in a tree)
 
+### AVL Tree
 
-- the first and top element is the root
-- the last node is called leaf
-- number of branches of one side is called depth
+- Adelson-Velsky, and Landis
+- self-balanced binary search tree
+
+### Red-Black Tree
+
+- self-balanced binary search tree
+- additional color attribute to each node
+
+### Ternary Search Tree
+
+- each node has three children (e.g. left for lower, middle for same, and right for higher)
+
+### n-ary Tree (Generic Tree)
+
+- each node can have any number of children
+
+### B Tree
+
+- specialized n-ary tree with balanced subtrees
+
+### B+ Tree
+
+- an extended version of the B Tree
+- optimized for disk/cache access
+
+## Graph
+
+- Nodes and Endges
+    - Graph G = <N, E>
+     N = Set of Nodes
+     E = Set of Edges (Set of Node pairs)
+    - Digraph (Directed Graph) G = <N, E>
+    - Weigthed Graph G = <N, E, F>
+    F = Function returning the weight of a node pair
+- Any number of nodes, and any possible connection between two nodes
+- Storage requirements
+    - List of Nodes (Array List)
+    - Edges per Node (Array List of Edges / Reference to the other node)
+- Realization
+    - Node List
+        - e.g. <\#N, \#E, a1, a2, b1, b2, ...>
+        - (a1, a2) representing the edge, with a1 as the start node, a2 as the end node
+        - applyable to a graph and digraph
+        - e.g. Graph G = <4, 4, 0, 2, 1, 2, 1, 3, 2, 3>
+        - e.g. Digraph G = <4, 4, 0, 1, 0, 2, 1, 2, 3, 2>
+
 
 # Algorithms
 
