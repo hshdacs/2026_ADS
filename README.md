@@ -281,6 +281,7 @@ graph TD
 ### n-ary Tree (Generic Tree)
 
 - each node can have any number of children
+- special form is the **Trie** for String traversal and prefixing, n is the alphabet size (26, 128, 256)
 
 ### B Tree
 
@@ -306,12 +307,58 @@ graph TD
     - Edges per Node (Array List of Edges / Reference to the other node)
 - Realization
     - Node List
-        - e.g. <\#N, \#E, a1, a2, b1, b2, ...>
+        - <\#N, \#E, a1, a2, b1, b2, ...>
         - (a1, a2) representing the edge, with a1 as the start node, a2 as the end node
         - applyable to a graph and digraph
         - e.g. Graph G = <4, 4, 0, 2, 1, 2, 1, 3, 2, 3>
+        ```mermaid
+        graph LR
+            0((0)) --- 2((2))
+            1((1)) --- 2
+            1 --- 3((3))
+            2 --- 3
+        ```
         - e.g. Digraph G = <4, 4, 0, 1, 0, 2, 1, 2, 3, 2>
+        ```mermaid
+        graph LR
+            0((0)) --> 1((1))
+            0 --> 2((2))
+            1 --> 2
+            3((3)) --> 2
+        ```
+    - Edge List (Digraph)
+        - <\#N, [\#E,] \#node0, target nodes, \#node1, target nodes, \#node3, ...>
+        - e.g. Digraph G = <4, 4, 2, 1, 2, 1, 2, 0, 1, 2> same digraph as above
+        - e.g. another Digraph G = <4, 4, 1, 2, 0, 2, 0, 1, 1, 2>
+        or
+        Digraph G = <4, 1, 2, 0, 2, 0, 1, 1, 2>
+        ```mermaid
+        graph LR
+            0((0)) --> 2((2))
+            1((1))
+            2 --> 0
+            2 --> 1
+            3((3)) --> 2
+        ```
+    - Adjacent Matrix
+        - Rows reprensent the start nodes
+        - Columns represent the end node
 
+        e.g. first graph from above
+        | Start/End node | 0 | 1 | 2 | 3 | 
+        | - | - | - | - | - | 
+        | 0 | 0 | 1 | 1 | 0 |
+        | 1 | 0 | 0 | 1 | 0 |
+        | 2 | 0 | 0 | 0 | 0 |
+        | 3 | 0 | 0 | 1 | 0 |      
+
+        e.g. second graph from above
+        | Start/End node | 0 | 1 | 2 | 3 | 
+        | - | - | - | - | - | 
+        | 0 | 0 | 0 | 1 | 0 |
+        | 1 | 0 | 0 | 0 | 0 |
+        | 2 | 1 | 1 | 0 | 0 |
+        | 3 | 0 | 0 | 1 | 0 |      
 
 # Algorithms
 
@@ -322,3 +369,17 @@ graph TD
 - Termination
 - Efficiency
 
+
+## Complexity
+
+- Landau Notation O( f(n) )
+- n is the number of elements (input, processing elements)
+- the function estimates the number of processing steps required in accordance to the number of elements
+- typically the approximation ends in some standard functions
+    - O( 1 )  [constant]
+    - O( log_2 n )  [logarithmic]
+    - O( n )  [linear]
+    - O( n log_2 n) [linearithmic]
+    - O( n^2 )  [square]
+    - O( n^k ) with k > 2  [exponential]
+    - O( k^n ) with k >= 2  [polynomial]
