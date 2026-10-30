@@ -369,7 +369,6 @@ graph TD
 - Termination
 - Efficiency
 
-
 ## Complexity
 
 - Landau Notation O( f(n) )
@@ -383,3 +382,14 @@ graph TD
     - O( n^2 )  [square]
     - O( n^k ) with k > 2  [exponential]
     - O( k^n ) with k >= 2  [polynomial]
+- best case Ω(...) [big omega]
+- worst case O(...) [big O]
+- average case Θ(...) [big theta]
+
+## Searching
+- Linear Search O(n)
+- Binary Search O(log_2 n)
+
+## Sorting
+- BubbleSort O(n^2)
+
