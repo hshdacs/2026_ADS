@@ -392,4 +392,7 @@ graph TD
 
 ## Sorting
 - BubbleSort O(n^2)
-
+- SelectionSort O(n^2)
+- InsertionSort O(n^2)
+- QuickSort : worst case O(n^2), avg case O(n log_2 n)
+- MergeSort O(n log_2 n)
