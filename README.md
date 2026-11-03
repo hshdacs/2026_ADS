@@ -391,8 +391,12 @@ graph TD
 - Binary Search O(log_2 n)
 
 ## Sorting
-- BubbleSort O(n^2)
-- SelectionSort O(n^2)
-- InsertionSort O(n^2)
-- QuickSort : worst case O(n^2), avg case O(n log_2 n)
-- MergeSort O(n log_2 n)
+|Algorithm|Complexity|stable|
+|-|-|-|
+| BubbleSort | O(n^2) | yes |
+| SelectionSort | O(n^2) | no |
+| InsertionSort | O(n^2) | yes |
+| QuickSort | worst case O(n^2), avg case O(n log_2 n) | no |
+| MergeSort | O(n log_2 n) | yes |
+| HeapSort | O(n log_2 n) | no |
+| CylceSort | O(n^2) | no |

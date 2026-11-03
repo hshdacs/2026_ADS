@@ -7,7 +7,7 @@ public class Main {
         int compare(int a, int b);
     }
 
-    private static final int ARRAY_SIZE = 100;
+    private static final int ARRAY_SIZE = 10;
     private static final int ELEMENT_RANGE = 90;
     private static final int ELEMENT_BIAS = -10;
 
@@ -150,13 +150,95 @@ public class Main {
         msort(array, 0, array.length-1);
     }
 
+    private static void heapify(int[] array, int n, int i) {
+        processing_steps++;
+
+        // remember maximum element
+        int maximum = i;    
+        
+        // set left and right index
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        // pick the biggest element of these three
+        if (left < n && array[left] > array[maximum])
+            maximum = left;
+        if (right < n && array[right] > array[maximum])
+            maximum = right;
+
+        // if it was rotated, swap and heapify once more
+        if (maximum != i) {
+            swap(array, i, maximum);
+            heapify(array, n, maximum);
+        }
+    }
+
+    private static void heap_sorting(int[] array) {
+        // build a tree (via array storing)
+        for (int i = array.length/2 - 1; i >= 0; i--)
+            heapify(array, array.length, i);
+
+        // kind of selection sort
+        for (int i=array.length-1; i > 0; i--) {
+            processing_steps++;
+            swap(array, 0, i);
+            heapify(array, i, 0);
+        }
+    }
+
+    private static void cycle_sorting(int[] array) {
+        for (int start = 0; start <= array.length-2; start++) {
+            int element = array[start];
+            
+            int pos = start;
+            for (int i = start; i < array.length; i++) {
+                processing_steps++;
+                if (array[i] < element)
+                    pos++; // counting for its correct position
+            }
+
+            // already in correct position
+            if (pos == start) continue;
+            
+            // ingnoring duplicates
+            while (element == array[pos]) pos++;
+
+            processing_steps++;
+            if (pos != start) {
+                int temp = array[pos];
+                array[pos] = element;
+                element = temp;
+            }
+
+            // rotate rest of the cycle
+            while (pos != start) {
+                pos = start;
+
+                for (int i = start + 1; i < array.length; i++) {
+                    processing_steps++;
+                    if (array[i] < element)
+                        pos++;
+                }
+                while (element == array[pos]) pos++;
+
+                if (element != array[pos]) {
+                    int temp = array[pos];
+                    array[pos] = element;
+                    element = temp;
+                }
+            }
+        }
+    }
+
+
+
     public static void main(String[] args) {
         int[] array = new int[ARRAY_SIZE];
         randomize_array(array);
-        advanced_sorting(array, (a, b) -> b - a);
+        advanced_sorting(array, (a, b) -> a - b);
         print_array(array);
         reset_processing_steps();
-        merge_sorting(array);
+        cycle_sorting(array);
         print_processing_steps();
         print_array(array);
         System.out.println( isArraySorted(array) ? "Sorted" : "UNSORTED");
