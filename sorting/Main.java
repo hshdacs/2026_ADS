@@ -7,9 +7,9 @@ public class Main {
         int compare(int a, int b);
     }
 
-    private static final int ARRAY_SIZE = 10;
-    private static final int ELEMENT_RANGE = 90;
-    private static final int ELEMENT_BIAS = -10;
+    private static final int ARRAY_SIZE = 1_000_000;
+    private static final int ELEMENT_RANGE = 10_000;
+    private static final int ELEMENT_BIAS = 0;
 
     private static int processing_steps = 0;
 
@@ -89,8 +89,8 @@ public class Main {
         if (left >= right) return;
  
         // pick an element which represents the medium of all values
-        //int middle = array[ (left + right) / 2 ];
-        int middle = array[ left ];
+        int middle = array[ (left + right) / 2 ];
+        //int middle = array[ left ];
 
         // seperating the both lists
         int left_index = left;
@@ -230,17 +230,65 @@ public class Main {
         }
     }
 
+    private static void count_sort(int[] array, int n, int exp) {
+        int[] output = new int[n];
+        int[] count = new int[10]; // counting the digits
+
+        // prepare a statistic of the numbers
+        for (int i = 0; i < n; i++) {
+            count[ (array[i] / exp) % 10 ]++;
+        }
+
+        // determining each bucket size
+        for (int i=1; i<10; i++) {
+            count[i] += count[i-1];
+        }
+
+        // distribute the values into their buckets
+        for (int i = n-1; i >= 0; i--) {
+            output[ count[(array[i] / exp) % 10] - 1 ] = array[i];
+            count[(array[i] / exp) % 10]--;
+        }
+
+        // copy to original array
+        for (int i = 0; i < n; i++) {
+            array[i] = output[i];
+        }
+    }
+
+    private static int search_maximum(int[] array, int start_pos) {
+        int maximum_element = array[start_pos];
+        for (int i = start_pos + 1; i < array.length; i++) {
+            if (array[i] > maximum_element) {
+                maximum_element = array[i];
+            }            
+        }
+        return maximum_element;
+    }
+
+    private static void radix_sorting(int[] array) {
+        int highest_number = search_maximum(array, 0);
+        
+        // general case
+        for (int exp = 1; highest_number / exp > 0; exp *= 10) {
+            count_sort(array, array.length, exp);
+            //print_array(array);
+        }
+    }
 
 
     public static void main(String[] args) {
         int[] array = new int[ARRAY_SIZE];
         randomize_array(array);
-        advanced_sorting(array, (a, b) -> a - b);
-        print_array(array);
-        reset_processing_steps();
-        cycle_sorting(array);
-        print_processing_steps();
-        print_array(array);
+        //advanced_sorting(array, (a, b) -> a - b);
+//        print_array(array);
+//        reset_processing_steps();
+        long start = System.nanoTime();
+        merge_sorting(array);
+        long duration = System.nanoTime() - start;
+//        print_processing_steps();
+//        print_array(array);
+        System.out.println(duration/1_000_000.0 + " ms");
         System.out.println( isArraySorted(array) ? "Sorted" : "UNSORTED");
     }
 

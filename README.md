@@ -396,7 +396,8 @@ graph TD
 | BubbleSort | O(n^2) | yes |
 | SelectionSort | O(n^2) | no |
 | InsertionSort | O(n^2) | yes |
+| CylceSort | O(n^2) | no |
 | QuickSort | worst case O(n^2), avg case O(n log_2 n) | no |
 | MergeSort | O(n log_2 n) | yes |
 | HeapSort | O(n log_2 n) | no |
-| CylceSort | O(n^2) | no |
+| RadixSort | O(n) | yes |
