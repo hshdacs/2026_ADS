@@ -401,3 +401,12 @@ graph TD
 | MergeSort | O(n log_2 n) | yes |
 | HeapSort | O(n log_2 n) | no |
 | RadixSort | O(n) | yes |
+
+## Hashing
+
+- used in Tables (aka Dict, Maps, Key-Value-Pairs)
+- storing passwords, because a hash function is non-reversible
+    (projecting a big amount of data into a single value)
+- Integrity and equality checking for a big amount of data
+- used in blockchains to ensure integrity and high effort to reproduce
+- used in signing a message or information in combination with public key cryptography
