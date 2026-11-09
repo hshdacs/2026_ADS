@@ -410,3 +410,16 @@ graph TD
 - Integrity and equality checking for a big amount of data
 - used in blockchains to ensure integrity and high effort to reproduce
 - used in signing a message or information in combination with public key cryptography
+
+## Graphs
+
+```mermaid
+flowchart LR
+    A((0)) -- 4 --- B((1))
+    A((0)) -- 8 --- C((2))
+    B -- 3 --- C
+    B -- 6 --- D((4))
+    C -- 2 --- E((3))
+    D -- 10 --- E
+```
+Shortest Path to all Nodes starting from 0: [0, 4, 7, 9, 10]
